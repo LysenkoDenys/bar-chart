@@ -1,0 +1,45 @@
+:root {
+  --color-primary: #e3e6ec;
+  --color-secondary: #1e293b;
+  --radius: 1rem;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  background: rgb(59, 125, 59);
+  color: var(--color-primary);
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  line-height: 1.2;
+}
+
+main {
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.container {
+  max-width: 800px;
+  min-width: 300px;
+  width: 100%;
+  margin: 0 auto;
+}
