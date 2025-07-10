@@ -22,7 +22,7 @@ body {
   flex-direction: column;
   font-family: 'Inter', sans-serif;
   background: rgb(42, 101, 42);
-  color: var(--color-primary);
+  color: var(--color-secondary);
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
   line-height: 1.4;
@@ -33,9 +33,8 @@ main {
 }
 
 h1 {
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 2vw, 2rem);
   text-align: center;
-  margin-bottom: 1rem;
 }
 
 .container {
@@ -43,4 +42,35 @@ h1 {
   min-width: 300px;
   width: 100%;
   margin: 0 auto;
+  background-color: var(--color-primary);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0.5rem;
+  }
+}
+
+.container:hover {
+  transform: scale(1.01);
+}
+
+svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 100%;
+}
+
+svg text {
+  font-size: 0.9rem;
+  font-size: clamp(0.6rem, 1.5vw, 1rem);
+}
+
+svg .info {
+  font-size: 1rem;
+  font-size: clamp(0.5rem, 1.2vw, 0.9rem);
 }
