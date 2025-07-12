@@ -71,6 +71,20 @@ svg text {
 }
 
 svg .info {
-  font-size: 1rem;
   font-size: clamp(0.5rem, 1.2vw, 0.9rem);
+}
+
+#tooltip {
+  position: absolute;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  pointer-events: none;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  transition: opacity 0.2s ease-in-out;
+  z-index: 10;
 }

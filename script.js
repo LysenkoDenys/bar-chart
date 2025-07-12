@@ -41,7 +41,33 @@ const fetchGDPDataFromApi = async () => {
       .attr('width', (w - 2 * padding) / dataset.length)
       .attr('height', (d) => h - padding - yScale(d[1]))
       .attr('fill', 'rgb(51, 173, 255)')
-      .attr('class', 'bar');
+      .attr('class', 'bar')
+      // ========================================================
+      .on('mouseover', function (event, d) {
+        tooltipEl.style.opacity = 1;
+        tooltipEl.innerHTML = `<strong>${
+          d[0]
+        }</strong><br>$${d[1].toLocaleString()} Billion`;
+
+        const barRect = event.target.getBoundingClientRect();
+
+        // Horizontal center of the bar (accounting for scroll)
+        const barCenterX = barRect.left + window.scrollX + barRect.width / 2;
+
+        // Position tooltip 10px below the bottom of the bar
+        const barBottomY = barRect.bottom + window.scrollY;
+
+        tooltipEl.style.left = `${barCenterX}px`;
+        tooltipEl.style.top = `${barBottomY + 10}px`; // 10px below the bar
+
+        d3.select(this).attr('fill', 'white');
+      })
+
+      .on('mouseout', function () {
+        tooltipEl.style.opacity = 0;
+        d3.select(this).attr('fill', 'rgb(51, 173, 255)');
+      });
+    //===========================================================
 
     const xAxis = d3.axisBottom(xScale);
 
