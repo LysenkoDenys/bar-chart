@@ -42,9 +42,12 @@ const fetchGDPDataFromApi = async () => {
       .attr('height', (d) => h - padding - yScale(d[1]))
       .attr('fill', 'rgb(51, 173, 255)')
       .attr('class', 'bar')
+      .attr('data-date', (d) => d[0])
+      .attr('data-gdp', (d) => d[1])
       // ========================================================
       .on('mouseover', function (event, d) {
         tooltipEl.style.opacity = 1;
+        tooltipEl.setAttribute('data-date', d[0]);
         tooltipEl.innerHTML = `<strong>${
           d[0]
         }</strong><br>$${d[1].toLocaleString()} Billion`;
