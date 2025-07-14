@@ -54,14 +54,15 @@ const fetchGDPDataFromApi = async () => {
 
         const barRect = event.target.getBoundingClientRect();
 
-        // Horizontal center of the bar (accounting for scroll)
-        const barCenterX = barRect.left + window.scrollX + barRect.width / 2;
+        const tooltipWidth = tooltipEl.offsetWidth;
+        const tooltipHeight = tooltipEl.offsetHeight;
 
-        // Position tooltip 10px below the bottom of the bar
-        const barBottomY = barRect.bottom + window.scrollY;
+        const left =
+          barRect.left + window.scrollX + barRect.width / 2 - tooltipWidth / 2;
+        const top = barRect.top + window.scrollY - tooltipHeight - 10;
 
-        tooltipEl.style.left = `${barCenterX}px`;
-        tooltipEl.style.top = `${barBottomY + 10}px`; // 10px below the bar
+        tooltipEl.style.left = `${left}px`;
+        tooltipEl.style.top = `${top}px`;
 
         d3.select(this).attr('fill', 'white');
       })
